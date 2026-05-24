@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>B2 Job Skills 1 - Class 2 Homework</title>
+<title>B2 Job Skills 1 - Class 3 Homework</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',sans-serif;background:#5B5091;min-height:100vh;padding:20px}
@@ -56,8 +56,8 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <body>
 <div class="container">
 <div class="header">
-<h1>B2 Job Skills 1 - Class 2 Homework</h1>
-<p>Scheduling Conflicts • Modal Verbs: must, have to, should</p>
+<h1>B2 Job Skills 1 - Class 3 Homework</h1>
+<p>Small Talk in Daily Life and Workplace • Tag Questions</p>
 </div>
 
 <div class="section active" id="start">
@@ -74,8 +74,9 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <option value="3097" data-teacher="Angela Gradiska">3097 - Tue/Thu 6:30 PM (Angela)</option>
 <option value="3102" data-teacher="Angela Gradiska">3102 - Tue/Thu 8:30 PM (Angela)</option>
 </optgroup>
-</select><button class="btn" onclick="startQuiz()">Start Homework →</button>
-<div class="note">This homework only tests Class 2 content: scheduling-conflict vocabulary, modal verbs <b>must / have to / should</b>, and workplace conflict dialogues.</div>
+</select>
+<button class="btn" onclick="startQuiz()">Start Homework →</button>
+<div class="note">This homework only tests Class 3 content: small talk, appropriate and inappropriate conversation topics, and tag questions.</div>
 </div>
 </div>
 
@@ -84,10 +85,10 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="progress"><div class="progress-bar" style="width:20%"></div></div>
 <h2>1. Reading</h2>
 <div class="reading-box">
-<p><strong>A Scheduling Conflict at Work</strong></p>
-<p>Sarah has a scheduling conflict next Tuesday. Her child has a doctor’s appointment, but it is also an important workday. She needs to talk to her supervisor.</p>
-<p>Sarah says she <strong>has to</strong> take her child to the appointment. Her supervisor says the team is very busy, but they can try to adjust the schedule. Sarah says she can <strong>make up</strong> the hours on Monday and Wednesday.</p>
-<p>The supervisor asks Sarah to update her timesheet accordingly. In the end, they find a solution together. Sarah learned that she should communicate early when there is a conflict.</p>
+<p><strong>Small Talk Before a Meeting</strong></p>
+<p>Before the meeting starts, Kevin talks to a new coworker in the break room. He asks about the weather, the commute, and how the coworker likes the city so far. The conversation feels easy and professional.</p>
+<p>Kevin avoids very personal topics like salary, age, and politics. He knows those topics are often off-limits at work, especially when people do not know each other well yet.</p>
+<p>At the end, Kevin says, “This office is friendly, isn’t it?” His coworker smiles and says, “Yes, it is.”</p>
 </div>
 <div id="readingQuestions"></div>
 <button class="btn" onclick="checkS1()">Continue →</button><button class="btn" style="background:#e5e7eb;color:#333;margin-top:8px" onclick="showSection('start')">&larr; Back</button>
@@ -98,7 +99,7 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="card">
 <div class="progress"><div class="progress-bar" style="width:40%"></div></div>
 <h2>2. Vocabulary</h2>
-<p class="small">Match the scheduling-conflict word to its meaning.</p>
+<p class="small">Match the small-talk phrase or topic to its meaning or category.</p>
 <div class="word-bank" id="wordBank"></div>
 <div id="vocabDrops"></div>
 <button class="btn" onclick="checkS2()">Continue →</button><button class="btn" style="background:#e5e7eb;color:#333;margin-top:8px" onclick="showSection('s1')">&larr; Back</button>
@@ -109,12 +110,11 @@ audio{width:100%;margin-top:14px}.hidden{display:none}
 <div class="card">
 <div class="progress"><div class="progress-bar" style="width:60%"></div></div>
 <h2>3. Writing</h2>
-<p class="small">Write 6–8 sentences about a scheduling conflict. Use at least 4 class vocabulary words and include <b>must</b>, <b>have to</b>, and <b>should</b>.</p>
-<textarea id="writing" placeholder="I have a scheduling conflict because...
-I have to...
-I must...
-I should...
-The solution is..."></textarea>
+<p class="small">Write a short small talk conversation at work (6–8 lines). Use at least 1 Tag Question.</p>
+<textarea id="writing" placeholder="A: Good morning! Nice weather today, isn't it?
+B: Yes, it really is! Are you settling in well?
+A: ...
+B: ..."></textarea>
 <p class="small" style="text-align:right">Words: <span id="wc">0</span></p>
 <div id="wFeedback" class="feedback hidden"></div>
 <button class="btn" id="wBtn" onclick="checkWriting()">Get Feedback →</button><button class="btn" style="background:#e5e7eb;color:#333;margin-top:8px" onclick="showSection('s2')">&larr; Back</button>
@@ -126,7 +126,7 @@ The solution is..."></textarea>
 <div class="card">
 <div class="progress"><div class="progress-bar" style="width:80%"></div></div>
 <h2>4. Speaking</h2>
-<p class="small">Speak for 30–45 seconds. Explain a scheduling conflict and a possible solution. Try to use class vocabulary and modal verbs.</p>
+<p class="small">Create and record a short small talk dialogue between two people at work (6–8 lines). Play both roles yourself — speak as Person A, then as Person B. Use at least one tag question.</p>
 <div class="record-btn" id="recBtn" onclick="toggleRec()"><div class="record-dot"></div></div>
 <div class="timer" id="timer">0:00</div>
 <div class="status" id="recStatus">Click to start recording</div>
@@ -166,46 +166,51 @@ The solution is..."></textarea>
 <script>
 function setTeacher(sel){var opt=sel.options[sel.selectedIndex];var th=document.getElementById('teacherName');if(th)th.value=opt?(opt.getAttribute('data-teacher')||''):''}
 
-const SESSION='2';
+const SESSION='3';
 let name='',scores={l:0,v:0,w:0,s:0,g:0},writingText='',spokenText='';
 let selectedWord=null,isRec=false,recTime=0,recTimer=null,recognition=null;
 let readingAnswers=[],grammarAnswers=[];
 
 const readingQBank=[
-  {q:"Why does Sarah have a conflict next Tuesday?",opts:["She has training and a doctor’s appointment","She has two parties","She is going on vacation"],correct:0},
-  {q:"What can Sarah do on Monday and Wednesday?",opts:["Work overtime","Make up the hours","Cancel the appointment"],correct:1},
-  {q:"What does the supervisor ask Sarah to update?",opts:["Her report","Her timesheet","Her email address"],correct:1},
-  {q:"What did Sarah learn at the end?",opts:["To communicate early when there is a conflict","To avoid conflicts at work","To always cancel appointments"],correct:0},
-  {q:"What should Sarah do when there is a conflict?",opts:["Stay silent","Communicate early","Ignore the schedule"],correct:1}
+  {q:"What topics does Kevin talk about?",opts:["Weather, commute, and the city","Salary, age, and politics","Family problems and money"],correct:0},
+  {q:"Why does Kevin avoid some topics?",opts:["They are boring","They are often off-limits at work","He does not know any topics"],correct:1},
+  {q:"What tag question does Kevin use?",opts:["isn't it?","don't you?","won't they?"],correct:0},
+  {q:"Where does the conversation happen?",opts:["In the parking lot","In the break room","In the elevator"],correct:1},
+  {q:"How does the conversation feel?",opts:["Easy and professional","Awkward and rude","Long and stressful"],correct:0}
 ];
 
 const vocabPairs=[
-  {word:"conflict",def:"a clash between two plans or responsibilities"},
-  {word:"deadline",def:"the latest time something must be finished"},
-  {word:"prioritize",def:"to decide what is more important first"},
-  {word:"reschedule",def:"to move something to a different time"},
-  {word:"timesheet",def:"a record of hours worked"},
-  {word:"update",def:"the latest information or a new change"},
-  {word:"make up hours",def:"to work extra time to recover lost time"},
-  {word:"handle",def:"to deal with or manage a situation"}
+  {word:"small talk",def:"light conversation about safe, everyday topics"},
+  {word:"off-limits",def:"not appropriate to discuss in a situation"},
+  {word:"commute",def:"the trip between home and work"},
+  {word:"appropriate",def:"suitable or acceptable"},
+  {word:"weather",def:"a common safe conversation topic"},
+  {word:"politics",def:"a topic often avoided in early workplace conversations"},
+  {word:"salary",def:"pay from a job; often private"},
+  {word:"tag question",def:"a short question added at the end, like “isn’t it?”"}
 ];
 
 const grammarQBank=[
-  {q:"Employees _____ arrive on time for the meeting tomorrow.",opts:["have to","should to","musting"],correct:0},
-  {q:"You _____ drink more water if you want to stay healthy.",opts:["should","must to","have"],correct:0},
-  {q:"I _____ submit my report by Friday because it is the deadline.",opts:["have to","should be","musting"],correct:0},
-  {q:"Students _____ turn off their cell phones during class.",opts:["must","have turn","should to"],correct:0},
-  {q:"You _____ visit the doctor if you feel sick for several days.",opts:["should","musting","have visit"],correct:0},
-  {q:"Drivers _____ have a valid license in most countries.",opts:["must","should to","has to"],correct:0},
-  {q:"We _____ exercise regularly to stay healthy.",opts:["should","musted","have exercises"],correct:0},
-  {q:"I _____ adjust my schedule because of the conflict.",opts:["have to","musting","should be"],correct:0},
-  {q:"People _____ recycle to help the environment.",opts:["should","must to","have recycles"],correct:0},
-  {q:"You _____ communicate early when there is a problem.",opts:["should","musted","have communication"],correct:0}
+  {q:"It's a nice day, _____?",opts:["isn't it","doesn't it","aren't they"],correct:0},
+  {q:"You work here, _____?",opts:["don't you","aren't you","isn't it"],correct:0},
+  {q:"She isn't new, _____?",opts:["is she","isn't she","does she"],correct:0},
+  {q:"They can join us, _____?",opts:["can't they","don't they","aren't they"],correct:0},
+  {q:"We should leave now, _____?",opts:["shouldn't we","don't we","can't we"],correct:0},
+  {q:"He doesn't like small talk, _____?",opts:["does he","doesn't he","is he"],correct:0},
+  {q:"This topic is off-limits, _____?",opts:["isn't it","doesn't it","aren't they"],correct:0},
+  {q:"You have met her before, _____?",opts:["haven't you","don't you","aren't you"],correct:0},
+  {q:"She can help us, _____?",opts:["can't she","doesn't she","isn't she"],correct:0},
+  {q:"We aren't late, _____?",opts:["are we","aren't we","do we"],correct:0}
 ];
 
 function shuffle(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
 function showSection(id){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
-function startQuiz(){name=document.getElementById('studentName').value.trim();var classVal=document.getElementById('className').value;if(!name){alert('Please enter your name');return;}if(!classVal){alert('Please select your class');return;}setTeacher(document.getElementById('className'));initQuestions();showSection('s1');}
+function startQuiz(){
+  name=document.getElementById('studentName').value.trim();
+  if(!name){alert('Please enter your name');return;}
+  var classVal=document.getElementById('className').value;if(!classVal){alert('Please select your class');return;}setTeacher(document.getElementById('className'));
+  initQuestions();showSection('s1');
+}
 function sel(el){el.parentElement.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));el.classList.add('selected');}
 function initQuestions(){
   const rQs=shuffle([...readingQBank]).slice(0,3);let rHTML='';
@@ -243,7 +248,7 @@ function startRec(){
   if(!SR){alert('Speech recognition not supported in this browser.');return;}
   spokenText='';
   const box=document.getElementById('transcriptBox');
-  box.textContent='';box.classList.add('hidden');
+  if(box){box.textContent='';box.classList.add('hidden');}
   isRec=true;recTime=0;
   document.getElementById('recBtn').classList.add('recording');
   document.getElementById('recStatus').textContent='Recording... Click again to stop';
@@ -254,8 +259,7 @@ function startRec(){
   recognition.lang='en-US';
   recognition.onresult=function(e){
     spokenText+=e.results[0][0].transcript+' ';
-    box.textContent='Transcript: '+spokenText.trim();
-    box.classList.remove('hidden');
+    if(box){box.textContent='Transcript: '+spokenText.trim();box.classList.remove('hidden');}
   };
   recognition.onerror=function(){};
   recognition.onend=function(){ if(isRec){ try{recognition.start();}catch(e){} } };
@@ -269,56 +273,42 @@ function stopRec(){
   document.getElementById('sBtn').disabled=false;
 }
 
-function checkSpeaking(){const text=spokenText.toLowerCase();let score=recTime>=12?8:recTime>=7?5:2;const items=['conflict','deadline','prioritize','reschedule','must','have to','should','solution'];score += Math.min(6, items.filter(x=>text.includes(x)).length) * 2;scores.s=Math.min(20,score);document.getElementById('sFeedback').innerHTML='<b>Score: '+scores.s+'/20</b><br>Speaking is scored mainly on completing the task and using class language clearly.';document.getElementById('sFeedback').classList.remove('hidden');showSection('s5');}
+function checkSpeaking(){const text=spokenText.toLowerCase();let score=recTime>=12?8:recTime>=7?5:2;const items=['small talk','weather','commute','appropriate','off-limits',"isn't it","don't you","haven't you"];score += Math.min(6, items.filter(x=>text.includes(x)).length) * 2;scores.s=Math.min(20,score);document.getElementById('sFeedback').innerHTML='<b>Score: '+scores.s+'/20</b><br>Speaking is scored mainly on completing the task and using class language clearly.';document.getElementById('sFeedback').classList.remove('hidden');showSection('s5');}
 function submitFinal(){let c=0;document.querySelectorAll('#grammarQuestions .question').forEach((q,i)=>{const s=q.querySelector('.option.selected');const a=parseInt(q.dataset.c);if(s&&parseInt(s.dataset.v)===a)c++;});scores.g=c;const total=scores.l+scores.v+scores.s+scores.g;const pct=Math.round(total/37*100);document.getElementById('finalPct').textContent=pct+'%';document.getElementById('studentDisplay').textContent=name;document.getElementById('scL').textContent=scores.l+'/3';document.getElementById('scV').textContent=scores.v+'/6';document.getElementById('scW').textContent='👩‍🏫';document.getElementById('scS').textContent=scores.s+'/20';document.getElementById('scG').textContent=scores.g+'/8';showSection('results');}
 
 function submitToTeacher(){
+  const btn=document.getElementById('submitBtn');
+  if(btn){btn.disabled=true;btn.textContent='Submitting...';}
+
   const pct=Math.round((scores.l+scores.v+scores.s+scores.g)/37*100);
   const speakingTranscript=(typeof spokenText!=='undefined' && spokenText)?spokenText:'';
 
-  const form = document.createElement('form');
-  form.method = 'POST';
-  form.action = 'https://docs.google.com/forms/d/e/1FAIpQLSe3-96EKbLIQ8Cm0oU6FFzvpTNqwBniK0mEHN5_nge5wr0UtA/formResponse';
-  form.target = 'hidden_iframe';
-  form.style.display = 'none';
+  const formData = new FormData();
+  formData.append('entry.154629934', name);
+  formData.append('entry.771629595', document.getElementById('className').value);
+  formData.append('entry.1564061356', '3');
+  formData.append('entry.1994438750', scores.l + '/3');
+  formData.append('entry.1169985852', scores.v + '/6');
+  formData.append('entry.66378887', 'Teacher will grade');
+  formData.append('entry.665897330', scores.s + '/20');
+  formData.append('entry.1528226896', scores.g + '/8');
+  formData.append('entry.543147037', pct + '%');
+  formData.append('entry.301386877', writingText || '');
+  formData.append('entry.1035810181', speakingTranscript || 'No transcript captured');
+  formData.append('entry.1451249480', document.getElementById('teacherName').value);
 
-  const fields = {
-    'entry.154629934': name,
-    'entry.771629595': document.getElementById('className').value,
-    'entry.1564061356': '2',
-    'entry.1994438750': scores.l + '/3',
-    'entry.1169985852': scores.v + '/6',
-    'entry.66378887': 'Teacher will grade',
-    'entry.665897330': scores.s + '/20',
-    'entry.1528226896': scores.g + '/8',
-    'entry.543147037': pct + '%',
-    'entry.301386877': writingText,
-    'entry.1035810181': speakingTranscript,
-    'entry.1451249480': document.getElementById('teacherName').value
-  };
+  fetch('https://docs.google.com/forms/d/e/1FAIpQLSe3-96EKbLIQ8Cm0oU6FFzvpTNqwBniK0mEHN5_nge5wr0UtA/formResponse', {
+    method: 'POST',
+    mode: 'no-cors',
+    body: formData
+  }).catch(function(){});
 
-  Object.keys(fields).forEach(key => {
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = key;
-    input.value = fields[key];
-    form.appendChild(input);
-  });
-
-  let iframe = document.getElementById('hidden_iframe');
-  if(!iframe){
-    iframe = document.createElement('iframe');
-    iframe.name = 'hidden_iframe';
-    iframe.id = 'hidden_iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
+  if(btn){btn.textContent='Submitted ✓';btn.style.background='#22c55e';}
+  const status=document.getElementById('submitStatus');
+  if(status){
+    status.innerHTML='✅ <strong>Homework submitted successfully!</strong><br><span style="font-size:0.9em;color:#555">Your teacher has received your work.</span><br><br><button onclick="location.reload()" style="margin-top:8px;padding:10px 20px;background:#5B5091;color:#fff;border:none;border-radius:10px;font-size:15px;cursor:pointer;font-family:inherit">🔄 Retake Homework</button>';
+    status.style.display='block';
   }
-
-  document.body.appendChild(form);
-  form.submit();
-  form.remove();
-
-  alert('Homework submitted successfully.');
 }
 
 </script>
